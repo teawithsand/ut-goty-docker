@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    image: ut99-game:latest
+    build: .
+    devices:
+      - /dev/dsp
+      - /dev/mixer
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - uthome:/home/utuser
+    network_mode: host
+
+volumes:
+  uthome:
